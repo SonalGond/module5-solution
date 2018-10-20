@@ -1,0 +1,28 @@
+<div class="container">
+  <legend class="text-center font-color">My Info</legend>
+  <div ng-if="$myInfoCtrl.user.firstName !== undefined">
+    <h4>
+  <label> First Name:</label> <label> {{ $myInfoCtrl.user.firstName }} </label>
+  <br/>
+  <br/>
+  <label>Last Name:</label> <label> {{ $myInfoCtrl.user.lastName }}</label>
+  <br/>
+  <br/>
+  <label>Email:</label> <label> {{ $myInfoCtrl.user.email }}</label>
+  <br/>
+  <br/>
+  <label>Phone:</label> <label>{{ $myInfoCtrl.user.phoneNo }}</label>
+  <br/>
+  <br/>
+  <label>Favorite Dish:</label>
+  <label>
+  <menu-item menu-item="$myInfoCtrl.user.favDish"></menu-item>
+</label>
+  </div>
+</h4>
+<h4>
+  <div ng-if="$myInfoCtrl.user.firstName === undefined">
+    <label>Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a></label>
+  </div>
+</h4>
+</div>
