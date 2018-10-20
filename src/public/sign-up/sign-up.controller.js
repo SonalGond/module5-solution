@@ -9,10 +9,8 @@ function SignUpController(MenuService) {
   var $signUpCtrl = this;
 
   $signUpCtrl.submit = function() {
-    if(!angular.isUndefined($signUpCtrl.user.favoriteDish) && $signUpCtrl.user.favoriteDish!== '') {
-      $signUpCtrl.user.favoriteDish = $signUpCtrl.user.favoriteDish.toUpperCase();
-    }
-  MenuService.getFavoriteDish($signUpCtrl.user.favoriteDish).then(function (response) {
+  if(!angular.isUndefined($signUpCtrl.user.favoriteDish) && $signUpCtrl.user.favoriteDish!== '') {
+  MenuService.getFavoriteDish($signUpCtrl.user.favoriteDish.toUpperCase()).then(function (response) {
       $signUpCtrl.user.favDish = response.data;
       MenuService.setUserInfo($signUpCtrl.user);
       $signUpCtrl.success = true;
@@ -21,6 +19,11 @@ function SignUpController(MenuService) {
       $signUpCtrl.success = false;
       $signUpCtrl.error = true;
     });
+  }
+  else{
+    $signUpCtrl.success = false;
+    $signUpCtrl.error = true;
+  }
   };
 }
 
